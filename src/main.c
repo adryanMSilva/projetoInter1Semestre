@@ -20,9 +20,9 @@ typedef struct {
 } Sell;
 
 /*------VARIAVEIS GLOBAIS-------*/
-static int idSell = 0;
-static Sell sells[255];
-static int contProd;
+int idSell = 0;
+Sell sells[255];
+int contProd;
 
 /*FUNCOES AUXILIARES*/
 
