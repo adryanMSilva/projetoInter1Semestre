@@ -119,7 +119,7 @@ void insert()
 	registerSell(s);
 }
 
-// Funcao para imprimir uma lista de Sell em JSON
+// Funcao para imprimir uma lista de Sell no formato JSON
 void jsonfy(Sell *s, int quantitySells)
 {
 	printf("\n\n[\n");
@@ -178,6 +178,7 @@ void find()
 	}
 }
 
+//Funcao para realizar pesquisa por parametro
 void advancedSearch()
 {
 	int choosenParam;
