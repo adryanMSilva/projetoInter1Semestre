@@ -22,7 +22,7 @@ typedef struct
 } Sell;
 
 /*------VARIAVEIS GLOBAIS-------*/
-int idSell = 0;
+int registeredSells = 0;
 Sell sells[1000];
 int contProd;
 
@@ -37,7 +37,7 @@ char *getCurrentDate()
 
     time(&rawtime);
     timeinfo = localtime(&rawtime);
-    strftime(todayDateStr, strlen("DD-MMM-YYYY HH:MM") + 1, "%d-%b-%Y %H:%M", timeinfo);
+    strftime(todayDateStr, strlen("DD-MMM-YYYY HH:MM:SS") + 1, "%d-%b-%Y %H:%M:%S", timeinfo);
 
     return todayDateStr;
 }
@@ -45,14 +45,14 @@ char *getCurrentDate()
 // Funcao para gerar o id e controlar a quantidade de vendas
 int generateId()
 {
-    idSell++;
-    return idSell;
+    registeredSells++;
+    return registeredSells;
 }
 
 // Funcao para inserir a venda no array
 void registerSell(Sell s)
 {
-    sells[idSell - 1] = s;
+    sells[registeredSells - 1] = s;
 }
 
 /*FUNCOES DO MENU*/
@@ -66,6 +66,8 @@ void insert()
     do
     {
     	s.value = 0;
+    	s.id = generateId();
+    	strcpy(s.date, getCurrentDate());
         system("@cls||clear");
         printf("\nRegistrar venda");
 
@@ -113,8 +115,6 @@ void insert()
         scanf(" %c", &continuar);
     } while (!(continuar != 's') || !(continuar != 'S'));
 
-    s.id = generateId();
-    strcpy(s.date, getCurrentDate());
     s.quantityProds = contProd;
     registerSell(s);
 }
@@ -122,7 +122,7 @@ void insert()
 // Funcao para imprimir uma lista de Sell em JSON
 void jsonfy(Sell *s, int quantitySells)
 {
-    printf("\n\n[\n");
+	printf("[\n");
     for (int i = 0; i < quantitySells; i++)
     {
         printf("\t{\n");
@@ -168,9 +168,9 @@ void find()
 {
     system("@cls||clear");
 
-    if (idSell > 0)
+    if (registeredSells > 0)
     {
-        jsonfy(sells, idSell);
+        jsonfy(sells, registeredSells);
     }
     else
     {
@@ -185,7 +185,7 @@ void advancedSearch()
     
     system("@cls||clear");
 
-    if (idSell > 0)
+    if (registeredSells > 0)
     {
         system("@cls||clear");
         printf("1. Id\n2. Valor total");
@@ -224,7 +224,7 @@ void advancedSearch()
 
             Sell foundMatch[1];
 
-            for (int i = 0; i < idSell; i++)
+            for (int i = 0; i < registeredSells; i++)
             {
                 if (sells[i].id == searchSell.id)
                 {
@@ -251,7 +251,7 @@ void advancedSearch()
 			
 			Sell foundMatches[30];
 			int matchesCounter = 0;
-            for (int i = 0; i < idSell; i++){
+            for (int i = 0; i < registeredSells; i++){
             	if (sells[i].value >= searchSell.value) {
             		foundMatches[matchesCounter] = sells[i]; 
             		matchesCounter++;
