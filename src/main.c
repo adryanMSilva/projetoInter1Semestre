@@ -308,6 +308,6 @@ void initMenu() {
     } while (continuar == 's');
 }
 
-int main() {
+void main() {
     initMenu();
 }
