@@ -190,7 +190,7 @@ void advancedSearch() {
                     printf("Pesquisar pelo id: ");
                     isValid = scanf("%d", &idDigitado);
 
-                    if (idDigitado <= 0 || idDigitado > registeredSells) {
+                    if (idDigitado <= 0) {
                         isValid = -1;
                     }
 
@@ -203,13 +203,17 @@ void advancedSearch() {
 
                 Sell foundMatch[1];
 
-                for (int i = 0; i < registeredSells; i++) {
-                    if (sells[i].id == searchSell.id) {
-                        foundMatch[0] = sells[i];
+                if(searchSell.id <= registeredSells) {
+                    for (int i = 0; i < registeredSells; i++) {
+                        if (sells[i].id == searchSell.id) {
+                            foundMatch[0] = sells[i];
+                        }
                     }
-                }
 
-                jsonfy(foundMatch, 1);
+                    jsonfy(foundMatch, 1);
+                } else {
+                    printf("Nao foram encontradas vendas com o id informado");
+                }
                 break;
 
             case 2:
@@ -242,7 +246,7 @@ void advancedSearch() {
                 if (matchesCounter > 0) {
                     jsonfy(foundMatches, matchesCounter);
                 } else {
-                    printf("Nao foram encontradas vendas para o parametro informado");
+                    printf("Nao foram encontradas vendas para o valor informado");
                 }
                 break;
 
