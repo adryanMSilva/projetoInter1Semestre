@@ -57,11 +57,11 @@ void insert() {
     char continuar;
     Sell s;
     contProd = 0;
+    s.value = 0;
 
+    s.id = generateId();
+    strcpy(s.date, getCurrentDate());
     do {
-        s.value = 0;
-        s.id = generateId();
-        strcpy(s.date, getCurrentDate());
         system("@cls||clear");
         printf("\nRegistrar venda");
 
@@ -97,9 +97,17 @@ void insert() {
 
         contProd++;
 
-        printf("Adicionar mais produtos?[s/n] ");
-        scanf(" %c", &continuar);
-    } while (!(continuar != 's') || !(continuar != 'S'));
+        while (1) {
+            printf("\nDeseja adicionar mais produtos?[s/n] ");
+            scanf(" %c", &continuar);
+
+            continuar = tolower(continuar);
+
+            if (continuar == 's' || continuar == 'n') break;
+            else printf("Valor invalido\n");
+        }
+
+    } while (continuar == 's');
 
     s.quantityProds = contProd;
     registerSell(s);
@@ -107,7 +115,7 @@ void insert() {
 
 // Funcao para imprimir uma lista de Sell em JSON
 void jsonfy(Sell *s, int quantitySells) {
-    printf("[\n");
+    printf("\n\n[\n");
     for (int i = 0; i < quantitySells; i++) {
         printf("\t{\n");
         printf("\t\t'Id': %d,\n", s[i].id);
@@ -177,12 +185,19 @@ void advancedSearch() {
         switch (choosenParam) {
             case 1:
                 do {
+                    int idDigitado;
                     setbuf(stdin, NULL);
                     printf("Pesquisar pelo id: ");
-                    isValid = scanf("%d", &searchSell.id);
+                    isValid = scanf("%d", &idDigitado);
+
+                    if (idDigitado <= 0 || idDigitado > registeredSells) {
+                        isValid = -1;
+                    }
 
                     if (isValid != 1) {
                         printf("Valor invalido\n");
+                    } else {
+                        searchSell.id = idDigitado;
                     }
                 } while (isValid != 1);
 
@@ -199,12 +214,18 @@ void advancedSearch() {
 
             case 2:
                 do {
+                    float valorDigitado;
                     setbuf(stdin, NULL);
                     printf("Pesquisar valores a partir de: ");
-                    isValid = scanf("%f", &searchSell.value);
+                    isValid = scanf("%f", &valorDigitado);
 
+                    if (valorDigitado <= 0) {
+                        isValid = -1;
+                    }
                     if (isValid != 1) {
                         printf("Valor invalido\n");
+                    } else {
+                        searchSell.value = valorDigitado;
                     }
                 } while (isValid != 1);
 
@@ -218,9 +239,11 @@ void advancedSearch() {
                     }
                 }
 
-
-                jsonfy(foundMatches, matchesCounter);
-
+                if (matchesCounter > 0) {
+                    jsonfy(foundMatches, matchesCounter);
+                } else {
+                    printf("Nao foram encontradas vendas para o parametro informado");
+                }
                 break;
 
         }
@@ -236,8 +259,12 @@ void initMenu() {
     int option;
 
     do {
+
+        system("@cls||clear");
+
+        printf("\n1. Registrar venda\n2. Consultar vendas\n3. Consulta avancada\n4. Sair");
+
         while (1) {
-            printf("\n1. Registrar venda\n2. Consultar vendas\n3. Consulta avancada\n4. Sair");
             setbuf(stdin, NULL);
             printf("\n\nEscolha uma opcao: ");
             scanf("%d", &option);
