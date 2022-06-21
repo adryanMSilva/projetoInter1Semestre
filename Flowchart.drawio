@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-21T20:30:43.781Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36 OPR/87.0.4390.58" etag="Kwx19Jr9pEO1KEEY1ran" version="20.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-06-21T20:37:15.678Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36 OPR/87.0.4390.58" etag="Dyulj0C6wI1U_AUMKJge" version="20.0.1" type="github">
   <diagram id="Y7C4bPwjppJKSVSHwJwJ" name="Page-6">
-    <mxGraphModel dx="1237" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" math="0" shadow="0">
+    <mxGraphModel dx="1649" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -431,6 +431,9 @@
         <mxCell id="c-7Q1v0U-zm9Be6gIihk-61" value="registeredSells &amp;gt; 0" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1554" y="1232" width="118" height="108" as="geometry" />
         </mxCell>
+        <mxCell id="c-7Q1v0U-zm9Be6gIihk-191" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="c-7Q1v0U-zm9Be6gIihk-63" target="c-7Q1v0U-zm9Be6gIihk-190">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="c-7Q1v0U-zm9Be6gIihk-63" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;Nao foram encontradas vendas registradas&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.document2;whiteSpace=wrap;size=0.25;fontSize=14;shadow=0;" vertex="1" parent="1">
           <mxGeometry x="1780" y="1231.5" width="120" height="109" as="geometry" />
         </mxCell>
@@ -736,6 +739,9 @@
         </mxCell>
         <mxCell id="c-7Q1v0U-zm9Be6gIihk-187" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;F&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="2888" y="2401" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c-7Q1v0U-zm9Be6gIihk-190" value="Fim" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="1246" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
